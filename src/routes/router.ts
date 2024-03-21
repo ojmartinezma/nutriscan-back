@@ -1,6 +1,6 @@
 import express from "express";
 import { Request, Response } from "express";
-import { getUsuarios,createUsuario,deleteUsuario } from "../controllers/usuarios.controller"
+import { getUsuarios,createUsuario,deleteUsuario, getUsuario, updateUsuario } from "../controllers/usuarios.controller"
 const router = express.Router();
 
 router.get('/', (_req:Request, res:Response) => {
@@ -16,8 +16,8 @@ router.get('/servicios', (_req:Request, res: Response) => {
 
 router.get( '/usuarios', getUsuarios );
 router.post( '/usuarios', createUsuario );
-router.put( '/usuarios/:id' );
+router.put( '/usuarios/:id', updateUsuario );
 router.delete( '/usuarios/:id', deleteUsuario );
-router.get( '/usuarios/:id' );
+router.get( '/usuarios/:id', getUsuario );
 
 module.exports = router;
