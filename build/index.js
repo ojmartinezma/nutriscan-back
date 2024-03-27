@@ -14,16 +14,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const database_1 = require("./database/database");
+const cors = require("cors");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use(cors());
 app.use('/api', require('./routes/router'));
 const PORT = 3000;
+// import './models/usuario'
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield database_1.sequelize.authenticate();
-        app.listen(PORT, () => {
-            console.log('Server running on port ', PORT);
-        });
+        try {
+            yield database_1.sequelize.sync({ force: false });
+            app.listen(PORT, () => {
+                console.log('Server running on port ', PORT);
+            });
+        }
+        catch (_a) {
+            console.error("unable to connect to database");
+        }
     });
 }
 main();
