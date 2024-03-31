@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-require('dotenv').config();
+import 'dotenv/config';
 
 const sequelize = new Sequelize(
     process.env.DB_DB as string,
