@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.17",
     "@types/node": "^20.11.28",
     "cors": "^2.8.5",
     "dotenv-extended": "^2.9.0",
