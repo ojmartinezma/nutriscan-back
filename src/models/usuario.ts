@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database";
 
 export const Usuario = sequelize.define('Usuario',{
-    id : {
+    uid : {
         type: DataTypes.STRING,
         primaryKey: true
     },

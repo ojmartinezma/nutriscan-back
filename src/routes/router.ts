@@ -16,8 +16,8 @@ router.get('/servicios', (_req:Request, res: Response) => {
 
 router.get( '/usuarios', getUsuarios );
 router.post( '/usuarios', createUsuario );
-router.put( '/usuarios/:id', updateUsuario );
-router.delete( '/usuarios/:id', deleteUsuario );
-router.get( '/usuarios/:id', getUsuario );
+router.put( '/usuarios/:uid', updateUsuario );
+router.delete( '/usuarios/:uid', deleteUsuario );
+router.get( '/usuarios/:uid', getUsuario );
 
 module.exports = router;
