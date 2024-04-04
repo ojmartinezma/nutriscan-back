@@ -53,13 +53,8 @@ export const createUsuario = async (req:Request, res: Response) => {
 
 export const updateUsuario = async (req:Request, res: Response) => {
     try {
-<<<<<<< HEAD
         const { uid } = req.params;
         const usuario = await Usuario.findByPk( uid );
-=======
-        const {uid} = req.params;
-        const usuario = await Usuario.findByPk(uid);
->>>>>>> 098d193cade0967cf0e0eaeddb0f5d849724f71c
         console.log(req.body);
         usuario?.set(req.body);
         await usuario?.save();
