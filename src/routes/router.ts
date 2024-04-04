@@ -20,11 +20,14 @@ router.post( '/usuarios', createUsuario );
 router.put( '/usuarios/:uid', updateUsuario );
 router.delete( '/usuarios/:uid', deleteUsuario );
 router.get( '/usuarios/:uid', getUsuario );
+<<<<<<< HEAD
 
 router.get( '/productos', getProductos );
 router.post( '/productos', createProducto );
 router.put( '/productos/:id', updateProducto );
 router.delete( '/productos/:id', deleteProducto );
 router.get( '/productos/:id', getProducto );
+=======
+>>>>>>> 098d193cade0967cf0e0eaeddb0f5d849724f71c
 
 module.exports = router;
