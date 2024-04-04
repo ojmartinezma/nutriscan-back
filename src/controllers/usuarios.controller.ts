@@ -17,8 +17,8 @@ export const getUsuarios = async (_req:Request, res: Response) => {
 
 export const getUsuario = async (req:Request, res: Response) => {
     try {         
-        const { id } = req.params;
-        const usuario = await Usuario.findByPk(id);
+        const { uid } = req.params;
+        const usuario = await Usuario.findByPk(uid);
         console.log("usuario");
         res.json(usuario);
     } catch(error: unknown){
@@ -31,9 +31,9 @@ export const getUsuario = async (req:Request, res: Response) => {
 
 export const createUsuario = async (req:Request, res: Response) => {
     try {
-        const { id,nombre,fechaSuscripcion,fechaDeNacimiento,altura,peso,telefono,correo } = req.body;
+        const { uid,nombre,fechaSuscripcion,fechaDeNacimiento,altura,peso,telefono,correo } = req.body;
         const newUsuario = await Usuario.create({
-            id,
+            uid,
             nombre,
             fechaSuscripcion,
             fechaDeNacimiento,
@@ -53,8 +53,8 @@ export const createUsuario = async (req:Request, res: Response) => {
 
 export const updateUsuario = async (req:Request, res: Response) => {
     try {
-        const {id} = req.params;
-        const usuario = await Usuario.findByPk(id);
+        const { uid } = req.params;
+        const usuario = await Usuario.findByPk( uid );
         console.log(req.body);
         usuario?.set(req.body);
         await usuario?.save();
@@ -70,10 +70,10 @@ export const updateUsuario = async (req:Request, res: Response) => {
 
 export const deleteUsuario = async (req:Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const { uid } = req.params;
         await Usuario.destroy({
             where: {
-                id,
+                uid,
             }
         });
         console.log("usuario borrado");
