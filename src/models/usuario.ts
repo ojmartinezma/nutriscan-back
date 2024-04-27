@@ -8,9 +8,9 @@ export const Usuario = sequelize.define('Usuario',{
     },
     nombre : {
         type: DataTypes.STRING,
-            validate:{
-                isAlphanumeric: true,
-            }
+            // validate:{
+            //     isAlphanumeric: true,
+            // }
     },
     fechaSuscripcion : {
         type: DataTypes.DATE,
