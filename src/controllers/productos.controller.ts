@@ -6,6 +6,7 @@ export const getProductos = async (_req:Request, res: Response) => {
     try {
         const listaProductos= await Producto.findAll();
         console.log("lista de productos");
+        console.log(listaProductos)
         res.json(listaProductos);
     } catch(error: unknown){
         if (error instanceof Error) {
@@ -31,14 +32,8 @@ export const getProducto = async (req:Request, res: Response) => {
 
 export const createProducto = async (req:Request, res: Response) => {
     try {
-        const { ID_producto, ID_tienda, referencia, descripcion, foto } = req.body;
-        const newProducto = await Producto.create({
-            ID_producto,
-            ID_tienda,
-            referencia,
-            descripcion,
-            foto,
-        });
+        //const { ID_producto, ID_tienda, nombre , referencia, descripcion, foto } = req.body;
+        const newProducto = await Producto.create(req.body);
         console.log("crear producto");
         res.json(newProducto);
     } catch(error: unknown){

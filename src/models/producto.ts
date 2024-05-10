@@ -14,6 +14,10 @@ export const Producto = sequelize.define('producto',{
         type: DataTypes.STRING,
         allowNull: true,
     },
+    nombre: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     descripcion: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -21,6 +25,5 @@ export const Producto = sequelize.define('producto',{
     foto: {
         type: DataTypes.STRING,
         allowNull: false,
-    }
-
+    },
 });

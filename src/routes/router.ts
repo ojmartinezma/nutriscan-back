@@ -1,6 +1,6 @@
 import express from "express";
 import { Request, Response } from "express";
-import { getUsuarios, createUsuario, deleteUsuario, getUsuario, updateUsuario } from "../controllers/usuarios.controller"
+import { getUsuarios, createUsuario, deleteUsuario, getUsuario, updateUsuario, cambiaSuscripcion } from "../controllers/usuarios.controller"
 import { getProductos, createProducto, updateProducto, deleteProducto, getProducto } from "../controllers/productos.controller";
 import { createHistorial, deleteHistorial, getHistorial, getHistorials, updateHistorial, } from "../controllers/historials.controller";
 const router = express.Router();
@@ -21,6 +21,7 @@ router.post( '/usuarios', createUsuario );
 router.put( '/usuarios/:uid', updateUsuario );
 router.delete( '/usuarios/:uid', deleteUsuario );
 router.get( '/usuarios/:uid', getUsuario );
+router.post( '/usuarios/cambiasuscripcion/:uid', cambiaSuscripcion );
 
 router.get( '/productos', getProductos );
 router.post( '/productos', createProducto );

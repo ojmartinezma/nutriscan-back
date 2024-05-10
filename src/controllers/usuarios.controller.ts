@@ -85,3 +85,20 @@ export const deleteUsuario = async (req:Request, res: Response) => {
     }
     
 }
+
+export const cambiaSuscripcion = async (req:Request, res: Response) => {
+    try {
+        const { uid } = req.params;
+        const usuario = await Usuario.findByPk( uid );
+        console.log(req.body);
+        usuario?.setDataValue('tipoSuscripcion',req.body.tipoSuscripcion);
+        await usuario?.save();
+        console.log("suscripcion actualizado");
+        res.json(usuario);
+    } catch(error: unknown){
+        if (error instanceof Error) {
+            res.status(500).json({"message":error.message})
+        }
+    }
+    
+}

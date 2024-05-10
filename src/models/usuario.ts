@@ -8,24 +8,35 @@ export const Usuario = sequelize.define('Usuario',{
     },
     nombre : {
         type: DataTypes.STRING,
-            // validate:{
-            //     isAlphanumeric: true,
-            // }
+            validate:{
+                is: /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/,
+                notEmpty: true,
+                len: [2,100], 
+            }
     },
     fechaSuscripcion : {
         type: DataTypes.DATE,
         validate: {
             isDate: true, 
-            isAfter: "2023-04-01",
+            isAfter: "2024-04-01",
         }
     },
+    tipoSuscripcion:{
+        type: DataTypes.ENUM('gratis','pago','tienda'),
+        allowNull:false,
+        defaultValue:'gratis',
+    },
     fechaDeNacimiento : {
-        type: DataTypes.DATEONLY
+        type: DataTypes.DATEONLY,
+        validate:{
+            isBefore: "2006-04-27", 
+        }
     },
     altura : {
         type : DataTypes.INTEGER,
         validate: {
             min: 50,
+            max: 300,
             isInt: true,
         }
     },
@@ -33,7 +44,8 @@ export const Usuario = sequelize.define('Usuario',{
         type: DataTypes.INTEGER,
         validate: {
             isInt: true,
-            min: 15
+            min: 15,
+            max: 400,
         }
     },
     telefono : {
