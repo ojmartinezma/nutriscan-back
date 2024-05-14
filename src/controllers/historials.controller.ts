@@ -31,15 +31,8 @@ export const getHistorial = async (req:Request, res: Response) => {
 
 export const createHistorial = async (req:Request, res: Response) => {
     try {
-        const { ID_dia, uid, ID_producto, fecha, comido, calorias } = req.body;
-        const newHistorial = await Historial.create({
-            ID_dia,
-            uid,
-            ID_producto,
-            fecha,
-            comido,
-            calorias,
-        });
+        //const { ID_dia, uid, ID_producto, fecha, comido, calorias } = req.body;
+        const newHistorial = await Historial.create(req.body);
         console.log("crear historial");
         res.json(newHistorial);
     } catch(error: unknown){

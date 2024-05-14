@@ -76,3 +76,23 @@ export const deleteTienda = async (req:Request, res: Response) => {
     }
     
 }
+
+export const getTiendaUsuario = async (req:Request, res: Response) => {
+    try {         
+        const { uid } = req.params;
+        const tiendas = await Tienda.findAll(
+            {
+                where: {
+                    'uid':uid,
+                }
+            }
+        );
+        console.log("tienda por usuario");
+        res.json(tiendas);
+    } catch(error: unknown){
+        if (error instanceof Error) {
+            res.status(500).json({"message":error.message})
+        }
+    }
+    
+}

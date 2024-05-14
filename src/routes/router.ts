@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { getUsuarios, createUsuario, deleteUsuario, getUsuario, updateUsuario, cambiaSuscripcion } from "../controllers/usuarios.controller"
 import { getProductos, createProducto, updateProducto, deleteProducto, getProducto } from "../controllers/productos.controller";
 import { createHistorial, deleteHistorial, getHistorial, getHistorials, updateHistorial, } from "../controllers/historials.controller";
+import { createTienda, deleteTienda, getTienda, getTiendas, updateTienda,getTiendaUsuario } from "../controllers/tiendas.controller";
 const router = express.Router();
 
 router.get('/', (_req:Request, res:Response) => {
@@ -34,5 +35,12 @@ router.post( '/historiales', createHistorial );
 router.put( '/historiales/:id', updateHistorial );
 router.delete( '/historiales/:id', deleteHistorial );
 router.get( '/historiales/:id', getHistorial );
+
+router.get( '/tiendas', getTiendas );
+router.post( '/tiendas', createTienda );
+router.put( '/tiendas/:id', updateTienda );
+router.delete( '/tiendas/:id', deleteTienda );
+router.get( '/tiendas/:id', getTienda );
+router.get( '/tiendasusuario/:uid', getTiendaUsuario );
 
 module.exports = router;
