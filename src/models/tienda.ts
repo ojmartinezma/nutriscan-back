@@ -4,6 +4,7 @@ import { sequelize } from "../database/database";
 export const Tienda = sequelize.define('tienda',{
     ID_tienda : {
         type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
     },
     uid : {
@@ -19,6 +20,14 @@ export const Tienda = sequelize.define('tienda',{
         allowNull: false,
     },
     direccion : {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    descripcion : {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    fotos : {
         type: DataTypes.STRING,
         allowNull: false,
     },
