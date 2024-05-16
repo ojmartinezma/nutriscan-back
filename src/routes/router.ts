@@ -1,7 +1,7 @@
 import express from "express";
 import { Request, Response } from "express";
 import { getUsuarios, createUsuario, deleteUsuario, getUsuario, updateUsuario, cambiaSuscripcion } from "../controllers/usuarios.controller"
-import { getProductos, createProducto, updateProducto, deleteProducto, getProducto, getProductosTienda, getProductosNombre } from "../controllers/productos.controller";
+import { getProductos, createProducto, updateProducto, deleteProducto, getProducto, getProductosTienda, getProductosNombre, getProductosReferencia } from "../controllers/productos.controller";
 import { createHistorial, deleteHistorial, getHistorial, getHistorials, updateHistorial, } from "../controllers/historials.controller";
 import { createTienda, deleteTienda, getTienda, getTiendas, updateTienda,getTiendaUsuario } from "../controllers/tiendas.controller";
 const router = express.Router();
@@ -31,6 +31,7 @@ router.delete( '/productos/:id', deleteProducto );
 router.get( '/productos/:id', getProducto );
 router.get( '/productostienda/:idtienda', getProductosTienda );
 router.get( '/productosnombre/:nombre', getProductosNombre );
+router.get( '/productosreferencia/:referencia', getProductosReferencia );
 
 router.get( '/historiales', getHistorials );
 router.post( '/historiales', createHistorial );
