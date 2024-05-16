@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database";
+import { Producto } from "./producto";
 
 export const Historial = sequelize.define('historial',{
     ID_dia : {
@@ -29,3 +30,5 @@ export const Historial = sequelize.define('historial',{
     }
 
 });
+
+Historial.belongsTo(Producto, {foreignKey:'ID_producto', as:'producto', constraints:false})

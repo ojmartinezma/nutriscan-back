@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Historial } from "../models/historial"
+import { Producto } from "../models/producto";
 
 
 export const getHistorials = async (_req:Request, res: Response) => {
@@ -35,7 +36,10 @@ export const getHistorialUsuario = async (req:Request, res: Response) => {
         const historial = await Historial.findAll({
             where:{
                 'uid':id
-            }
+            },
+            include: [
+                {model: Producto, as:'producto'}
+            ]
         });
         console.log("historial");
         res.json(historial);
