@@ -5,6 +5,7 @@ export const Historial = sequelize.define('historial',{
     ID_dia : {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
     uid : {
         type: DataTypes.STRING,

@@ -98,3 +98,26 @@ export const getProductosTienda = async (_req:Request, res: Response) => {
     }
     
 }
+
+export const getProductosNombre = async (_req:Request, res: Response) => {
+    try {
+        const { nombre } = _req.params;
+        const listaProductos= await Producto.findAll(
+            {
+                where: {
+                    'nombre':{
+                        $like: '%'+nombre+'%'
+                    },
+                }
+            }
+        );
+        console.log("lista de productos por nombre");
+        console.log(listaProductos)
+        res.json(listaProductos);
+    } catch(error: unknown){
+        if (error instanceof Error) {
+            res.status(500).json({"message":error.message})
+        }
+    }
+    
+}
