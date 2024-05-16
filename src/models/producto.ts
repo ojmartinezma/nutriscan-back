@@ -4,6 +4,7 @@ import { sequelize } from "../database/database";
 export const Producto = sequelize.define('producto',{
     ID_producto : {
         type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
     },
     ID_tienda : {
