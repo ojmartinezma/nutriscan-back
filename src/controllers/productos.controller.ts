@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Producto } from "../models/producto"
+import { Op } from "sequelize";
 
 
 export const getProductos = async (_req:Request, res: Response) => {
@@ -65,7 +66,7 @@ export const deleteProducto = async (req:Request, res: Response) => {
         const { id } = req.params;
         await Producto.destroy({
             where: {
-                id,
+                'ID_producto': id,
             }
         });
         console.log("producto borrado");
@@ -106,7 +107,7 @@ export const getProductosNombre = async (_req:Request, res: Response) => {
             {
                 where: {
                     'nombre':{
-                        $like: '%'+nombre+'%'
+                        [Op.iLike]: '%'+nombre+'%'
                     },
                 }
             }
