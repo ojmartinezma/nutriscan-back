@@ -29,6 +29,24 @@ export const getHistorial = async (req:Request, res: Response) => {
     
 }
 
+export const getHistorialUsuario = async (req:Request, res: Response) => {
+    try {         
+        const { id } = req.params;
+        const historial = await Historial.findAll({
+            where:{
+                'uid':id
+            }
+        });
+        console.log("historial");
+        res.json(historial);
+    } catch(error: unknown){
+        if (error instanceof Error) {
+            res.status(500).json({"message":error.message})
+        }
+    }
+    
+}
+
 export const createHistorial = async (req:Request, res: Response) => {
     try {
         //const { ID_dia, uid, ID_producto, fecha, comido, calorias } = req.body;

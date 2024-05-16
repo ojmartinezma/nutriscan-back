@@ -2,7 +2,7 @@ import express from "express";
 import { Request, Response } from "express";
 import { getUsuarios, createUsuario, deleteUsuario, getUsuario, updateUsuario, cambiaSuscripcion } from "../controllers/usuarios.controller"
 import { getProductos, createProducto, updateProducto, deleteProducto, getProducto, getProductosTienda, getProductosNombre, getProductosReferencia } from "../controllers/productos.controller";
-import { createHistorial, deleteHistorial, getHistorial, getHistorials, updateHistorial, } from "../controllers/historials.controller";
+import { createHistorial, deleteHistorial, getHistorial, getHistorialUsuario, getHistorials, updateHistorial, } from "../controllers/historials.controller";
 import { createTienda, deleteTienda, getTienda, getTiendas, updateTienda,getTiendaUsuario } from "../controllers/tiendas.controller";
 const router = express.Router();
 
@@ -38,6 +38,7 @@ router.post( '/historiales', createHistorial );
 router.put( '/historiales/:id', updateHistorial );
 router.delete( '/historiales/:id', deleteHistorial );
 router.get( '/historiales/:id', getHistorial );
+router.get( '/historialusuario/:id', getHistorialUsuario );
 
 router.get( '/tiendas', getTiendas );
 router.post( '/tiendas', createTienda );
