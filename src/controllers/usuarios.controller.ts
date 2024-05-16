@@ -92,6 +92,7 @@ export const cambiaSuscripcion = async (req:Request, res: Response) => {
         const usuario = await Usuario.findByPk( uid );
         console.log(req.body);
         usuario?.setDataValue('tipoSuscripcion',req.body.tipoSuscripcion);
+        usuario?.setDataValue('fechaSuscripcion',req.body.fechaSuscripcion);
         await usuario?.save();
         console.log("suscripcion actualizado");
         res.json(usuario);
