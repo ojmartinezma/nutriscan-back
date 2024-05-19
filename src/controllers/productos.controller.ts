@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Producto } from "../models/producto"
-import { Op } from "sequelize";
+import { Op, Sequelize } from "sequelize";
 
 
 export const getProductos = async (_req:Request, res: Response) => {
@@ -99,6 +99,32 @@ export const getProductosTienda = async (_req:Request, res: Response) => {
     }
     
 }
+
+export const getProductosAleatorios = async (_req: Request, res: Response) => {
+    try {
+        const { limit } = _req.params;  // Suponiendo que el límite se pasa como parámetro en la URL
+        const limiteNumero = parseInt(limit, 10);  // Convertir a número
+
+        if (isNaN(limiteNumero)) {
+            return res.status(400).json({ message: 'El parámetro limit debe ser un número' });
+        }
+
+        const productosAleatorios = await Producto.findAll({
+            order: [
+                Sequelize.literal('RANDOM()')  // Ordenar aleatoriamente
+            ],
+            limit: limiteNumero  // Limitar el número de resultados
+        });
+
+        console.log("Lista de productos aleatorios");
+        console.log(productosAleatorios);
+        res.json(productosAleatorios);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+};
 
 export const getProductosNombre = async (_req:Request, res: Response) => {
     try {
