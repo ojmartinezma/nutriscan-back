@@ -106,7 +106,7 @@ export const getProductosAleatorios = async (_req: Request, res: Response) => {
         const limiteNumero = parseInt(limit, 10);  // Convertir a número
 
         if (isNaN(limiteNumero)) {
-            return res.status(400).json({ message: 'El parámetro limit debe ser un número' });
+            res.status(400).json({ message: 'El parámetro limit debe ser un número' });
         }
 
         const productosAleatorios = await Producto.findAll({
