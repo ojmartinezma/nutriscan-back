@@ -31,6 +31,29 @@ export const getProducto = async (req:Request, res: Response) => {
     
 }
 
+export const getProductosSinCodigo = async (req: Request, res: Response) => {
+    try {
+        console.log(req);
+        const listaProductos= await Producto.findAll(
+            {
+                where: {
+                    'referencia':{
+                        [Op.startsWith]: "20009"
+                    },
+                }
+            }
+        );
+        console.log("lista de productos por tienda");
+        console.log(listaProductos)
+        res.json(listaProductos);
+    } catch(error: unknown){
+        if (error instanceof Error) {
+            res.status(500).json({"message":error.message})
+        }
+    }
+    
+}
+
 export const createProducto = async (req:Request, res: Response) => {
     try {
         //const { ID_producto, ID_tienda, nombre , referencia, descripcion, foto } = req.body;
