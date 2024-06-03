@@ -39,7 +39,8 @@ export const getHistorialUsuario = async (req:Request, res: Response) => {
             },
             include: [
                 {model: Producto, as:'producto'}
-            ]
+            ],
+            order: [['createdAt', 'DESC']]
         });
         console.log("historial");
         res.json(historial);
