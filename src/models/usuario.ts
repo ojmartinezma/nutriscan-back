@@ -61,6 +61,18 @@ export const Usuario = sequelize.define('Usuario',{
             isEmail: true, 
         }
     },
+    racha: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    ultimoLogueo:{
+        type: DataTypes.DATE,
+        validate: {
+            isDate: true, 
+            isAfter: "2024-04-01",
+        }
+    },
     foto : {
         type: DataTypes.STRING
     }
