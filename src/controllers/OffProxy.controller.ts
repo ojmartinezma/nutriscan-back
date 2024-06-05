@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import FormData from "form-data";
-import fetch from "node-fetch";
+const fetch = require('node-fetch');
 
 export const uploadOffImage = async (req:Request, res: Response) => {
   try {
