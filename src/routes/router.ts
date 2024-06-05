@@ -1,10 +1,15 @@
 import express from "express";
+import multer from "multer";
 import { Request, Response } from "express";
 import { getUsuarios, createUsuario, deleteUsuario, getUsuario, updateUsuario, cambiaSuscripcion } from "../controllers/usuarios.controller"
 import { getProductos, createProducto, updateProducto, deleteProducto, getProducto, getProductosTienda, getProductosNombre, getProductosReferencia, getProductosSinCodigo, getProductosAleatorios } from "../controllers/productos.controller";
 import { createHistorial, deleteHistorial, getHistorial, getHistorialUsuario, getHistorials, updateHistorial, } from "../controllers/historials.controller";
 import { createTienda, deleteTienda, getTienda, getTiendas, updateTienda,getTiendaUsuario } from "../controllers/tiendas.controller";
+import { uploadOffImage } from "../controllers/OffProxy.controller";
 const router = express.Router();
+const upload = multer({ dest: './offimgs' })
+
+router.post('/uploadoffimg', upload.single('offimg'), uploadOffImage)
 
 router.get('/', (_req:Request, res:Response) => {
     // console.log(__dirname)
