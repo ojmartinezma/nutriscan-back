@@ -54,4 +54,18 @@ router.delete( '/tiendas/:id', deleteTienda );
 router.get( '/tiendas/:id', getTienda );
 router.get( '/tiendasusuario/:uid', getTiendaUsuario );
 
+router.get( '/historialaccproducto', getHistorials );
+router.post( '/historialaccproducto', createHistorial );
+router.put( '/historialaccproducto/:id', updateHistorial );
+router.delete( '/historialaccproducto/:id', deleteHistorial );
+router.get( '/historialaccproducto/:id', getHistorial );
+router.get( '/historialaccproductoporusuario/:id', getHistorialUsuario );
+
+router.get( '/historialacctienda', getHistorials );
+router.post( '/historialacctienda', createHistorial );
+router.put( '/historialacctienda/:id', updateHistorial );
+router.delete( '/historialacctienda/:id', deleteHistorial );
+router.get( '/historialacctienda/:id', getHistorial );
+router.get( '/historialacctiendaporusuario/:id', getHistorialUsuario );
+
 module.exports = router;

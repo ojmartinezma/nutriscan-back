@@ -4,7 +4,6 @@ import { sequelize } from "../database/database";
 export const Clasificacion = sequelize.define('clasificacion',{
     ID_producto : {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
         allowNull: false,
     },
     ID_tag: {
