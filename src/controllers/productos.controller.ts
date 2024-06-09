@@ -202,14 +202,19 @@ export const getProductosEnlacesByReferencia = async (req: Request, res: Respons
             include: [{
                 model: Tienda,
                 as: 'tienda',
-                attributes: ['enlace'],
+                attributes: ['enlace','fotos','nombre','ID_tienda'],
             }],
         });
 
         console.log("lista de productos por referencia");
         console.log(productos);
 
-        const enlaces = productos.map((producto:any) => producto.tienda?.enlace);
+        const enlaces = productos.map((producto:any) => ({
+            fotos: producto.tienda?.fotos,
+            enlace: producto.tienda?.enlace,
+            nombre: producto.tienda?.nombre,
+            ID_tienda: producto.tienda?.ID_tienda,
+        }));
 
         res.json(enlaces);
     } catch (error: unknown) {
