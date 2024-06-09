@@ -223,3 +223,21 @@ export const getProductosEnlacesByReferencia = async (req: Request, res: Respons
         }
     }
 };
+
+export const getIDProductoByIDtiendaAndReferencia = async (req: Request, res: Response) => {
+    try {
+        const { referencia, ID_tienda } = req.params;
+        const productos = await Producto.findAll({
+            where: { referencia, ID_tienda },
+            attributes: ['ID_producto'], // Solo seleccionamos el ID_producto
+        });
+
+        const productoIDs = productos.map((producto: any) => producto.ID_producto);
+
+        res.json(productoIDs);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            res.status(500).json({ "message": error.message });
+        }
+    }
+};
