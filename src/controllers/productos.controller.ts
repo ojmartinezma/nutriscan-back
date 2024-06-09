@@ -201,6 +201,7 @@ export const getProductosEnlacesByReferencia = async (req: Request, res: Respons
             where: { referencia },
             include: [{
                 model: Tienda,
+                as: 'tienda',
                 attributes: ['enlace'],
             }],
         });
@@ -208,9 +209,9 @@ export const getProductosEnlacesByReferencia = async (req: Request, res: Respons
         console.log("lista de productos por referencia");
         console.log(productos);
 
-        // const enlaces = productos.map(producto => producto.Tienda?.enlace).filter(Boolean);
+        const enlaces = productos.map((producto:any) => producto.tienda?.enlace);
 
-        res.json({ productos });
+        res.json(enlaces);
     } catch (error: unknown) {
         if (error instanceof Error) {
             res.status(500).json({ "message": error.message });

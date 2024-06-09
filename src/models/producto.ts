@@ -30,4 +30,4 @@ export const Producto = sequelize.define('producto',{
     },
 });
 
-Producto.belongsTo(Tienda, { foreignKey: 'ID_tienda' });
+Producto.belongsTo(Tienda, { foreignKey: 'ID_tienda', as: 'tienda' });

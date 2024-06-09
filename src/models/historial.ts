@@ -24,6 +24,10 @@ export const Historial = sequelize.define('historial',{
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
+    redireccion : {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    },
     calorias : {
         type: DataTypes.INTEGER,
         allowNull: false,   

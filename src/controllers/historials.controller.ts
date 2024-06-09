@@ -36,6 +36,7 @@ export const getHistorialTienda = async (req:Request, res: Response) => {
         const historial = await Historial.findAll({
             include: [{
                 model: Producto,
+                as: 'producto',
                 where: {
                     ID_tienda: id,
                 },
