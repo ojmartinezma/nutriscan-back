@@ -30,6 +30,29 @@ export const getHistorial = async (req:Request, res: Response) => {
     
 }
 
+export const getHistorialTienda = async (req:Request, res: Response) => {
+    try {         
+        const { id } = req.params;
+        const historial = await Historial.findAll({
+            include: [{
+                model: Producto,
+                where: {
+                    ID_tienda: id,
+                },
+                required: true, // Ensure it joins only when there's a matching product
+            }],
+            order: [['createdAt', 'ASC']]
+        });
+        console.log("historial");
+        res.json(historial);
+    } catch(error: unknown){
+        if (error instanceof Error) {
+            res.status(500).json({"message":error.message})
+        }
+    }
+    
+}
+
 export const getHistorialUsuario = async (req:Request, res: Response) => {
     try {         
         const { id } = req.params;

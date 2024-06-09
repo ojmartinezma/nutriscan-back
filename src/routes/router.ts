@@ -3,7 +3,7 @@ import multer from "multer";
 import { Request, Response } from "express";
 import { getUsuarios, createUsuario, deleteUsuario, getUsuario, updateUsuario, cambiaSuscripcion } from "../controllers/usuarios.controller"
 import { getProductos, createProducto, updateProducto, deleteProducto, getProducto, getProductosTienda, getProductosNombre, getProductosReferencia, getProductosSinCodigo, getProductosAleatorios } from "../controllers/productos.controller";
-import { createHistorial, deleteHistorial, getHistorial, getHistorialUsuario, getHistorials, updateHistorial, } from "../controllers/historials.controller";
+import { createHistorial, deleteHistorial, getHistorial, getHistorialTienda, getHistorialUsuario, getHistorials, updateHistorial, } from "../controllers/historials.controller";
 import { createTienda, deleteTienda, getTienda, getTiendas, updateTienda,getTiendaUsuario } from "../controllers/tiendas.controller";
 import { uploadOffImage } from "../controllers/OffProxy.controller";
 const router = express.Router();
@@ -39,6 +39,7 @@ router.get( '/productostienda/:idtienda', getProductosTienda );
 router.get( '/productosnombre/:nombre', getProductosNombre );
 router.get( '/productosreferencia/:referencia', getProductosReferencia );
 router.get( '/productosaleatorios/:limit', getProductosAleatorios );
+router.get( '/productosReferencias/:id', getProductosAleatorios );
 
 router.get( '/historiales', getHistorials );
 router.post( '/historiales', createHistorial );
@@ -65,7 +66,7 @@ router.get( '/historialacctienda', getHistorials );
 router.post( '/historialacctienda', createHistorial );
 router.put( '/historialacctienda/:id', updateHistorial );
 router.delete( '/historialacctienda/:id', deleteHistorial );
-router.get( '/historialacctienda/:id', getHistorial );
+router.get( '/historialacctienda/:id', getHistorialTienda );
 router.get( '/historialacctiendaporusuario/:id', getHistorialUsuario );
 
 module.exports = router;

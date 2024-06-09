@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Producto } from "../models/producto"
 import { Op, Sequelize } from "sequelize";
+import { Tienda } from "../models/tienda";
 
 
 export const getProductos = async (_req:Request, res: Response) => {
@@ -192,3 +193,27 @@ export const getProductosReferencia = async (_req:Request, res: Response) => {
     }
     
 }
+
+export const getProductosEnlacesByReferencia = async (req: Request, res: Response) => {
+    try {
+        const { referencia } = req.params;
+        const productos = await Producto.findAll({
+            where: { referencia },
+            include: [{
+                model: Tienda,
+                attributes: ['enlace'],
+            }],
+        });
+
+        console.log("lista de productos por referencia");
+        console.log(productos);
+
+        // const enlaces = productos.map(producto => producto.Tienda?.enlace).filter(Boolean);
+
+        res.json({ productos });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            res.status(500).json({ "message": error.message });
+        }
+    }
+};

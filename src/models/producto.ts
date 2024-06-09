@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database";
+import { Tienda } from "./tienda";
 
 export const Producto = sequelize.define('producto',{
     ID_producto : {
@@ -28,3 +29,5 @@ export const Producto = sequelize.define('producto',{
         allowNull: false,
     },
 });
+
+Producto.belongsTo(Tienda, { foreignKey: 'ID_tienda' });
