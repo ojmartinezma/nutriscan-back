@@ -7,7 +7,9 @@ import { createHistorial, deleteHistorial, getHistorial, getHistorialTienda, get
 import { createTienda, deleteTienda, getTienda, getTiendas, updateTienda,getTiendaUsuario } from "../controllers/tiendas.controller";
 import { uploadOffImage } from "../controllers/OffProxy.controller";
 const router = express.Router();
-const upload = multer({ dest: './offimgs' })
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+
 
 router.post('/uploadoffimg', upload.single('offimg'), uploadOffImage)
 
