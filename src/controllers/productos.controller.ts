@@ -133,12 +133,28 @@ export const getProductosAleatorios = async (_req: Request, res: Response) => {
             res.status(400).json({ message: 'El parámetro limit debe ser un número' });
         }
 
-        const productosAleatorios = await Producto.findAll({
+        let productosAleatorios = await Producto.findAll({
+            where: {
+                ID_tienda: {
+                    [Op.not]: null
+                }
+            },
             order: [
                 Sequelize.literal('RANDOM()')  // Ordenar aleatoriamente
             ],
             limit: limiteNumero  // Limitar el número de resultados
         });
+
+        if(productosAleatorios.length < limiteNumero){
+            const productosExtra = await Producto.findAll({
+                order: [
+                    Sequelize.literal('RANDOM()')
+                ],
+                limit: limiteNumero - productosAleatorios.length
+            })
+
+            productosAleatorios = [...productosAleatorios, ...productosExtra];
+        }
 
         console.log("Lista de productos aleatorios");
         console.log(productosAleatorios);
