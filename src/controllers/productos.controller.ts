@@ -147,6 +147,11 @@ export const getProductosAleatorios = async (_req: Request, res: Response) => {
 
         if(productosAleatorios.length < limiteNumero){
             const productosExtra = await Producto.findAll({
+                where: {
+                    ID_tienda: {
+                        [Op.is]: null
+                    }
+                },
                 order: [
                     Sequelize.literal('RANDOM()')
                 ],
