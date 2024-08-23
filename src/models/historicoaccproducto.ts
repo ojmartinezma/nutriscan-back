@@ -8,6 +8,10 @@ export const Historicoaccproducto = sequelize.define('historicoaccproducto',{
         primaryKey: true,
         autoIncrement: true,
     },
+    cantidad : {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
     uid : {
         type: DataTypes.STRING,
         allowNull: false,

@@ -20,6 +20,10 @@ export const Historial = sequelize.define('historial',{
         type: DataTypes.DATEONLY,
         allowNull: false,
     },
+    cantidad : {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
     comido : {
         type: DataTypes.BOOLEAN,
         allowNull: false,
