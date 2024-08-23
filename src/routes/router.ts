@@ -61,7 +61,7 @@ router.get( '/tiendasusuario/:uid', getTiendaUsuario );
 router.get( '/historialaccproducto', getHistorials );
 router.post( '/historialaccproducto', createHistorial );
 router.put( '/historialaccproducto/:id', updateHistorial );
-router.delete( '/historialaccproducto/:id', deleteHistorial );
+router.delete( '/historialaccproducto/:uid', deleteHistorial );
 router.get( '/historialaccproducto/:id', getHistorial );
 router.get( '/historialaccproductoporusuario/:id', getHistorialUsuario );
 

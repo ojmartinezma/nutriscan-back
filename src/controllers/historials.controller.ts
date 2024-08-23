@@ -108,10 +108,10 @@ export const updateHistorial = async (req:Request, res: Response) => {
 
 export const deleteHistorial = async (req:Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const { uid } = req.params;
         await Historial.destroy({
             where: {
-                id,
+                uid,
             }
         });
         console.log("historial borrado");
